@@ -1,0 +1,6 @@
+{
+  "name": "Mano Bakes",
+  "description": "An elegant, premium bakery web application styled and engineered in the luxury boutique aesthetics of Pink Frost, featuring custom flavor options, an interactive cart drawer, a live order tracker, and a comprehensive admin manager.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
