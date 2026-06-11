@@ -89,17 +89,22 @@ export const Header: React.FC = () => {
         <div
           id="brand-logo-container"
           onClick={() => setActivePage('home')}
-          // CHANGED: Added 'hidden md:flex' to hide the entire container on mobile 
-          // if you want it completely gone. 
-          // If you want to keep the icon but hide the text, update the sub-divs instead.
           className="cursor-pointer flex items-center group hidden md:flex"
         >
-          <div className="relative h-14 w-14 sm:h-16 sm:w-16 bg-[#F4D3CD] rounded-full border border-[#D9AB9E]/60 p-1 shadow-inner flex flex-col items-center justify-center text-center transition-transform duration-500 hover:scale-105">
-            {/* ... your logo icon content ... */}
+          {/* The Pink Circle Container */}
+          <div className="relative h-14 w-14 sm:h-16 sm:w-16 bg-[#F4D3CD] rounded-full border border-[#D9AB9E]/60 p-1 shadow-inner flex items-center justify-center overflow-hidden transition-transform duration-500 hover:scale-105">
+
+            {/* ADD YOUR LOGO IMAGE HERE */}
+            <img
+              src="/public/logo.png"
+              alt="Mano Bakes Logo"
+              className="w-full h-full object-contain"
+            />
+
           </div>
 
           <div className="hidden md:flex flex-col ml-3 select-none">
-            {/* ... your logo text content ... */}
+            {/* Your text content remains here */}
           </div>
         </div>
         {/* NAVIGATION Centered (Desktop) */}
@@ -429,6 +434,6 @@ export const Header: React.FC = () => {
           </>
         )}
       </AnimatePresence>
-    </header>
+    </header >
   );
 };
