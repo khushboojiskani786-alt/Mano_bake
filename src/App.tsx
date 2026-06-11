@@ -2,7 +2,6 @@ import React from 'react';
 import { AppProvider, useApp } from './context/AppContext';
 import { Header } from './components/Header';
 import { HeroSlider } from './components/HeroSlider';
-import { PromoDeal } from './components/PromoDeal';
 import { Collections } from './components/Collections';
 import { ShopPage } from './components/ShopPage';
 import { ProductDetails } from './components/ProductDetails';
@@ -19,7 +18,7 @@ import { Instagram, Facebook, Mail, Phone, MapPin, Sparkles, AlertCircle } from 
 import { motion, AnimatePresence } from 'motion/react';
 
 const AppContent: React.FC = () => {
-  const { activePage, showCart, setShowCart, isAdminMode, showToast } = useApp();
+  const { activePage, showCart, setShowCart, isAdminMode } = useApp();
 
   // Primary routing controller matching user pages
   const renderActivePage = () => {
@@ -29,6 +28,8 @@ const AppContent: React.FC = () => {
           <>
             <HeroSlider />
             <Collections />
+            {/* About Page integrated into Home view */}
+            <AboutPage />
           </>
         );
       case 'shop':
@@ -54,6 +55,7 @@ const AppContent: React.FC = () => {
           <>
             <HeroSlider />
             <Collections />
+            <AboutPage />
           </>
         );
     }
@@ -61,19 +63,19 @@ const AppContent: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-secondary text-text-dark flex flex-col selection:bg-[#F4D3CD]/80 selection:text-text-dark">
-      
-      {/* 1. Header (Sticky navigation + indicators + hamburger) */}
+
+      {/* 1. Header (Sticky navigation) */}
       <Header />
 
       {/* Admin Mode floating alert reminder */}
       {isAdminMode && (
         <div id="admin-mode-banner" className="fixed top-18 left-0 right-0 z-40 bg-zinc-900 text-white text-center py-2 text-[10px] tracking-widest uppercase font-bold flex items-center justify-center gap-1.5 shadow-md">
-          <AlertCircle className="h-3.5 w-3.5 text-accent" /> Mode: Boutique Admin Suite Active. Toggle anytime in Account/Header switches.
+          <AlertCircle className="h-3.5 w-3.5 text-accent" /> Mode: Boutique Admin Suite Active.
         </div>
       )}
 
-      {/* 2. Main Page Render viewport with Framer Motion transitions */}
-      <main className="flex-grow overflow-x-hidden">
+      {/* 2. Main Page Render viewport */}
+      <main className="flex-grow overflow-x-hidden pt-28">
         <AnimatePresence mode="wait">
           <motion.div
             key={activePage}
@@ -97,8 +99,6 @@ const AppContent: React.FC = () => {
       <footer id="mano-bakes-footer" className="bg-[#4A3B35] text-secondary border-t-2 border-[#EBCFC8] pt-16 pb-10">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left select-none">
-            
-            {/* Division A: Logo and editorial manifesto */}
             <div className="space-y-4">
               <div className="flex items-center justify-center md:justify-start gap-1">
                 <Sparkles className="h-5 w-5 text-[#EBCFC8] animate-spin-slow" />
@@ -109,8 +109,6 @@ const AppContent: React.FC = () => {
               <p className="text-[11px] leading-relaxed italic text-white/70 max-w-xs mx-auto md:ml-0">
                 Crafting finest, temperature-conscious cakes, classic macarons, and signature cupcakes across F-6, F-7, DHA, and greater Islamabad. We honor celebration cake craft.
               </p>
-              
-              {/* Social Channels icons */}
               <div className="flex justify-center md:justify-start gap-3.5 pt-2 text-[#EBCFC8]">
                 <a href="#instagram" className="hover:text-white transition duration-200" aria-label="Follow us on Instagram">
                   <Instagram className="h-4.5 w-4.5" />
@@ -123,8 +121,6 @@ const AppContent: React.FC = () => {
                 </a>
               </div>
             </div>
-
-            {/* Division B: Boutique details location */}
             <div className="space-y-4 text-xs font-medium">
               <h4 className="font-semibold text-[#EBCFC8] uppercase tracking-widest text-[10px]">Studio Coordinates</h4>
               <div className="space-y-3 text-white/85 leading-relaxed font-serif italic text-[11px]">
@@ -138,8 +134,6 @@ const AppContent: React.FC = () => {
                 </div>
               </div>
             </div>
-
-            {/* Division C: Studio schedule timeslots */}
             <div className="space-y-4">
               <h4 className="font-semibold text-[#EBCFC8] uppercase tracking-widest text-[10px]">Preparation Timelines</h4>
               <ul className="text-[11px] text-white/80 space-y-2 leading-relaxed">
@@ -148,8 +142,6 @@ const AppContent: React.FC = () => {
                 <li className="text-[10px] text-white/60">Please book 24-hours prior for custom theme cakes and writing request orders.</li>
               </ul>
             </div>
-
-            {/* Division D: SSL Safety Badge */}
             <div className="space-y-4 text-xs">
               <h4 className="font-semibold text-[#EBCFC8] uppercase tracking-widest text-[10px]">Authentic Standards</h4>
               <p className="text-[11px] text-white/70 italic leading-relaxed max-w-xs mx-auto md:ml-0">
@@ -159,9 +151,7 @@ const AppContent: React.FC = () => {
                 🔒 SSL SECURED PORTAL
               </div>
             </div>
-
           </div>
-
           <div className="border-t border-white/10 mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center text-[10px] text-white/50 tracking-wider text-center sm:text-left select-none">
             <p>© 2026 Mano Bakes Patisserie. All rights reserved across Islamabad. Inspired by Pink Frost aesthetics.</p>
             <p className="mt-2 sm:mt-0 italic hover:text-[#EBCFC8] transition duration-200 hover:cursor-pointer">
@@ -170,7 +160,6 @@ const AppContent: React.FC = () => {
           </div>
         </div>
       </footer>
-
     </div>
   );
 };

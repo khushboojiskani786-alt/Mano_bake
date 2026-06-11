@@ -10,6 +10,7 @@ import mothersDayCake from './assets/images/mothers_day_cake_1780651785064.png';
 import customNameCupcakesBox from './assets/images/custom_name_cupcakes_box_1780651803447.png';
 import squareCookieSlabCake from './assets/images/square_cookie_slab_cake_1780651819670.png';
 
+
 export const INITIAL_CATEGORIES: Category[] = [
   {
     id: 'cat_cakes',
@@ -242,7 +243,8 @@ export const INITIAL_PRODUCTS: Product[] = [
 export const INITIAL_BANNERS: Banner[] = [
   {
     id: 'banner_1',
-    image: manoBakesBanner,
+    image: '/hero1.jpg',
+    mobileImage: '/hero1.jpg', // Add this
     title: 'Cakes & Treats',
     subtitle: 'HAND-CRAFTED WONDERS FOR EVERY CELEBRATION',
     active: true,
@@ -250,7 +252,8 @@ export const INITIAL_BANNERS: Banner[] = [
   },
   {
     id: 'banner_2',
-    image: 'https://images.unsplash.com/photo-1513262621280-7a02114852d8?auto=format&fit=crop&q=80&w=1600',
+    image: '/hero2.jpg',
+    mobileImage: 'https://images.unsplash.com/photo-1621303837174-89787a7d4729?q=80&w=436&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     title: 'Celebrate with Love',
     subtitle: 'CUSTOM THEME CAKES FOR MEMORABLE MOMENTS',
     active: true,

@@ -53,14 +53,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       {/* Product Card Container */}
       <div
         id={`product-card-${product.id}`}
-        className="group flex flex-col bg-secondary border border-primary/20 rounded-lg overflow-hidden transition-all duration-500 shadow-sm cursor-pointer hover:shadow-md hover:border-accent/40"
+        // Add 'flex-row' for mobile and 'flex-col' for sm+ to toggle layouts
+        className="group flex flex-row sm:flex-col bg-secondary border border-primary/20 rounded-lg overflow-hidden transition-all duration-500 shadow-sm cursor-pointer hover:shadow-md hover:border-accent/40"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         onClick={handleCardClick}
       >
-        {/* Image Box */}
-        <div className="relative aspect-square w-full bg-luxury-beige overflow-hidden">
-          {/* Zooming background image */}
+        {/* Update Image Box to be smaller on mobile for the list view */}
+        <div className="relative w-1/3 sm:w-full aspect-square bg-luxury-beige overflow-hidden shrink-0">
+          {/* ... rest of your image code ... */}
           <img
             src={product.images[0]}
             alt={product.name}
@@ -211,8 +212,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 <div>
                   <span className="text-[10px] uppercase tracking-widest text-accent font-bold mb-1 block">Mano Bakes Premium</span>
                   <h2 className="font-serif italic text-xl text-text-dark font-medium leading-tight mb-2">{product.name}</h2>
-                  
-                   {/* Price info */}
+
+                  {/* Price info */}
                   <div className="flex items-baseline gap-2 mb-4">
                     <span className="text-lg font-bold text-text-dark font-mono">Rs. {product.price.toLocaleString()}</span>
                     {product.originalPrice && (
@@ -226,7 +227,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                       </>
                     )}
                   </div>
-                  
+
                   {/* Small description snippet */}
                   <p className="text-xs text-text-light leading-relaxed mb-6 italic">{product.description}</p>
 
@@ -242,11 +243,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                             <button
                               key={fl}
                               onClick={() => setFlavor(fl)}
-                              className={`px-3 py-1.5 border rounded text-xs tracking-wider capitalize transition-all ${
-                                flavor === fl
+                              className={`px-3 py-1.5 border rounded text-xs tracking-wider capitalize transition-all ${flavor === fl
                                   ? 'border-accent bg-[#B9896A] text-[#FFF8F6] font-medium shadow-sm'
                                   : 'border-primary/40 text-text-light bg-white hover:border-accent hover:text-text-dark'
-                              }`}
+                                }`}
                             >
                               {fl}
                             </button>
@@ -266,11 +266,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                             <button
                               key={sz}
                               onClick={() => setSize(sz)}
-                              className={`px-3 py-1.5 border rounded text-xs tracking-wider capitalize transition-all ${
-                                size === sz
+                              className={`px-3 py-1.5 border rounded text-xs tracking-wider capitalize transition-all ${size === sz
                                   ? 'border-accent bg-[#B9896A] text-[#FFF8F6] font-medium shadow-sm'
                                   : 'border-primary/40 text-text-light bg-white hover:border-accent'
-                              }`}
+                                }`}
                             >
                               {sz}
                             </button>

@@ -63,29 +63,16 @@ export const Header: React.FC = () => {
   return (
     <header
       id="main-luxury-header"
-      className={`fixed top-0 left-0 w-full z-[990] transition-all duration-300 ${
-        isSticky
-          ? 'bg-secondary/95 backdrop-blur-md shadow-md py-2 border-b border-primary/20'
-          : 'bg-transparent py-4'
-      }`}
+      className={`fixed top-0 left-0 w-full z-[990] transition-all duration-300 ${isSticky
+        ? 'bg-secondary/95 backdrop-blur-md shadow-md py-2 border-b border-primary/20'
+        : 'bg-transparent py-4'
+        }`}
     >
       {/* Top Banner Alert (Promotional & Admin Sandbox Indicator) */}
       <div className="bg-[#EBCFC8] text-[#4A3B35] text-center py-2 text-[11px] tracking-[0.2em] font-bold uppercase flex justify-center items-center gap-3 px-4 select-none">
-        <span>Complimentary delivery on orders above 5,000 PKR — Handcrafted Daily</span>
+        <span>Complimentary delivery on orders above 5,000 PKR</span>
         <div className="hidden sm:flex h-3 w-px bg-[#4A3B35]/25"></div>
-        <button
-          onClick={() => {
-            setAdminMode(!isAdminMode);
-            showToast(
-              `Switched to ${!isAdminMode ? 'Admin Portal' : 'Customer Storefront'} view`,
-              'info'
-            );
-          }}
-          className="hover:bg-[#4A3B35]/10 flex items-center gap-1 font-bold text-[9px] uppercase tracking-widest text-[#4A3B35] border border-[#4A3B35]/30 rounded px-2 py-0.5 bg-white/40 transition-colors"
-        >
-          <ShieldAlert className="h-3 w-3" />
-          {isAdminMode ? 'Exit Admin' : 'Sandbox Admin'}
-        </button>
+
       </div>
 
       <div className="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between mt-2">
@@ -99,45 +86,28 @@ export const Header: React.FC = () => {
           <Menu className="h-6 w-6" />
         </button>
 
-        {/* LOGO on Left (Custom programmatic replica of uploaded image) */}
         <div
           id="brand-logo-container"
           onClick={() => setActivePage('home')}
-          className="cursor-pointer flex items-center group"
+          // CHANGED: Added 'hidden md:flex' to hide the entire container on mobile 
+          // if you want it completely gone. 
+          // If you want to keep the icon but hide the text, update the sub-divs instead.
+          className="cursor-pointer flex items-center group hidden md:flex"
         >
           <div className="relative h-14 w-14 sm:h-16 sm:w-16 bg-[#F4D3CD] rounded-full border border-[#D9AB9E]/60 p-1 shadow-inner flex flex-col items-center justify-center text-center transition-transform duration-500 hover:scale-105">
-            {/* Golden concentric outer-concentric details */}
-            <div className="absolute inset-0.5 rounded-full border border-[#B9896A]/30"></div>
-            <div className="absolute inset-1.5 rounded-full border border-[#B9896A]/60"></div>
-            
-            {/* Text logo */}
-            <span className="font-serif italic font-semibold text-xs sm:text-sm text-text-dark leading-none tracking-tight -mb-0.5 z-10 font-accent">
-              Mano
-            </span>
-            <span className="font-serif italic font-semibold text-[11px] sm:text-xs text-text-dark leading-none z-10 font-accent">
-              Bakes
-            </span>
-            <span className="text-[5px] sm:text-[6px] text-accent font-semibold tracking-widest leading-none mt-1 z-10">
-              EST. 2026
-            </span>
+            {/* ... your logo icon content ... */}
           </div>
+
           <div className="hidden md:flex flex-col ml-3 select-none">
-            <span className="font-serif font-semibold text-lg tracking-wide uppercase text-text-dark">
-              Mano Bakes
-            </span>
-            <span className="text-[9px] tracking-widest text-[#B9896A] font-semibold uppercase -mt-1">
-              Freshly Baked Happiness
-            </span>
+            {/* ... your logo text content ... */}
           </div>
         </div>
-
         {/* NAVIGATION Centered (Desktop) */}
         <nav id="desktop-nav" className="hidden lg:flex items-center gap-8 font-medium text-sm text-text-dark/95">
           <button
             onClick={() => handleNavClick('home')}
-            className={`hover:text-accent tracking-widest uppercase transition-colors py-2 relative ${
-              activePage === 'home' ? 'text-accent font-semibold' : ''
-            }`}
+            className={`hover:text-accent tracking-widest uppercase transition-colors py-2 relative ${activePage === 'home' ? 'text-accent font-semibold' : ''
+              }`}
           >
             Home
             {activePage === 'home' && (
@@ -153,9 +123,8 @@ export const Header: React.FC = () => {
           >
             <button
               onClick={() => handleNavClick('shop')}
-              className={`hover:text-accent tracking-widest uppercase transition-colors py-2 flex items-center gap-1 ${
-                activePage === 'shop' ? 'text-accent font-semibold' : ''
-              }`}
+              className={`hover:text-accent tracking-widest uppercase transition-colors py-2 flex items-center gap-1 ${activePage === 'shop' ? 'text-accent font-semibold' : ''
+                }`}
             >
               Shop
               <ChevronDown className={`h-3 w-3 transition-transform duration-300 ${shopDropdownOpen ? 'rotate-180' : ''}`} />
@@ -197,9 +166,8 @@ export const Header: React.FC = () => {
 
           <button
             onClick={() => handleNavClick('customize')}
-            className={`hover:text-accent tracking-widest uppercase transition-colors py-2 relative ${
-              activePage === 'customize' ? 'text-accent font-semibold' : ''
-            }`}
+            className={`hover:text-accent tracking-widest uppercase transition-colors py-2 relative ${activePage === 'customize' ? 'text-accent font-semibold' : ''
+              }`}
           >
             Customize
             {activePage === 'customize' && (
@@ -209,9 +177,8 @@ export const Header: React.FC = () => {
 
           <button
             onClick={() => handleNavClick('about')}
-            className={`hover:text-accent tracking-widest uppercase transition-colors py-2 relative ${
-              activePage === 'about' ? 'text-accent font-semibold' : ''
-            }`}
+            className={`hover:text-accent tracking-widest uppercase transition-colors py-2 relative ${activePage === 'about' ? 'text-accent font-semibold' : ''
+              }`}
           >
             Our Story
             {activePage === 'about' && (
@@ -221,9 +188,8 @@ export const Header: React.FC = () => {
 
           <button
             onClick={() => handleNavClick('contact')}
-            className={`hover:text-accent tracking-widest uppercase transition-colors py-2 relative ${
-              activePage === 'contact' ? 'text-accent font-semibold' : ''
-            }`}
+            className={`hover:text-accent tracking-widest uppercase transition-colors py-2 relative ${activePage === 'contact' ? 'text-accent font-semibold' : ''
+              }`}
           >
             Contact
             {activePage === 'contact' && (
@@ -233,9 +199,8 @@ export const Header: React.FC = () => {
 
           <button
             onClick={() => handleNavClick('order-tracking')}
-            className={`hover:text-accent tracking-widest uppercase transition-colors py-2 relative ${
-              activePage === 'order-tracking' ? 'text-accent font-semibold' : ''
-            }`}
+            className={`hover:text-accent tracking-widest uppercase transition-colors py-2 relative ${activePage === 'order-tracking' ? 'text-accent font-semibold' : ''
+              }`}
           >
             Track Order
             {activePage === 'order-tracking' && (
@@ -246,9 +211,8 @@ export const Header: React.FC = () => {
           {isAdminMode && (
             <button
               onClick={() => handleNavClick('admin-dashboard')}
-              className={`text-[#B9896A] border border-[#B9896A]/30 hover:bg-[#B9896A]/10 font-bold tracking-widest uppercase transition-all px-3 py-1.5 rounded text-xs py-2 relative flex items-center gap-1 ${
-                activePage === 'admin-dashboard' ? 'bg-[#B9896A]/20' : ''
-              }`}
+              className={`text-[#B9896A] border border-[#B9896A]/30 hover:bg-[#B9896A]/10 font-bold tracking-widest uppercase transition-all px-3 py-1.5 rounded text-xs py-2 relative flex items-center gap-1 ${activePage === 'admin-dashboard' ? 'bg-[#B9896A]/20' : ''
+                }`}
             >
               Admin Suite
             </button>
@@ -269,9 +233,8 @@ export const Header: React.FC = () => {
           {/* Account Profile / Admin Toggler */}
           <button
             onClick={() => handleNavClick('account')}
-            className={`p-2 hover:text-accent transition-colors ${
-              activePage === 'account' ? 'text-accent' : ''
-            }`}
+            className={`p-2 hover:text-accent transition-colors ${activePage === 'account' ? 'text-accent' : ''
+              }`}
             aria-label="View user profile account"
           >
             <User className="h-5 w-5" />
@@ -372,9 +335,8 @@ export const Header: React.FC = () => {
                 <div className="flex flex-col gap-5 text-sm font-semibold tracking-widest text-text-dark uppercase">
                   <button
                     onClick={() => handleNavClick('home')}
-                    className={`text-left py-2 hover:text-accent transition-colors ${
-                      activePage === 'home' ? 'text-accent pl-2 border-l-2 border-accent' : ''
-                    }`}
+                    className={`text-left py-2 hover:text-accent transition-colors ${activePage === 'home' ? 'text-accent pl-2 border-l-2 border-accent' : ''
+                      }`}
                   >
                     Home
                   </button>
@@ -382,9 +344,8 @@ export const Header: React.FC = () => {
                   <div className="flex flex-col">
                     <button
                       onClick={() => handleNavClick('shop')}
-                      className={`text-left py-2 hover:text-accent transition-colors ${
-                        activePage === 'shop' ? 'text-accent pl-2 border-l-2 border-accent font-bold' : ''
-                      }`}
+                      className={`text-left py-2 hover:text-accent transition-colors ${activePage === 'shop' ? 'text-accent pl-2 border-l-2 border-accent font-bold' : ''
+                        }`}
                     >
                       Shop Collection
                     </button>
@@ -404,36 +365,32 @@ export const Header: React.FC = () => {
 
                   <button
                     onClick={() => handleNavClick('customize')}
-                    className={`text-left py-2 hover:text-accent transition-colors ${
-                      activePage === 'customize' ? 'text-accent pl-2 border-l-2 border-accent' : ''
-                    }`}
+                    className={`text-left py-2 hover:text-accent transition-colors ${activePage === 'customize' ? 'text-accent pl-2 border-l-2 border-accent' : ''
+                      }`}
                   >
                     Customize Cake
                   </button>
 
                   <button
                     onClick={() => handleNavClick('about')}
-                    className={`text-left py-2 hover:text-accent transition-colors ${
-                      activePage === 'about' ? 'text-accent pl-2 border-l-2 border-accent' : ''
-                    }`}
+                    className={`text-left py-2 hover:text-accent transition-colors ${activePage === 'about' ? 'text-accent pl-2 border-l-2 border-accent' : ''
+                      }`}
                   >
                     Our Story
                   </button>
 
                   <button
                     onClick={() => handleNavClick('contact')}
-                    className={`text-left py-2 hover:text-accent transition-colors ${
-                      activePage === 'contact' ? 'text-accent pl-2 border-l-2 border-accent' : ''
-                    }`}
+                    className={`text-left py-2 hover:text-accent transition-colors ${activePage === 'contact' ? 'text-accent pl-2 border-l-2 border-accent' : ''
+                      }`}
                   >
                     Contact
                   </button>
 
                   <button
                     onClick={() => handleNavClick('order-tracking')}
-                    className={`text-left py-2 hover:text-accent transition-colors ${
-                      activePage === 'order-tracking' ? 'text-accent pl-2 border-l-2 border-accent' : ''
-                    }`}
+                    className={`text-left py-2 hover:text-accent transition-colors ${activePage === 'order-tracking' ? 'text-accent pl-2 border-l-2 border-accent' : ''
+                      }`}
                   >
                     Track Order
                   </button>
@@ -441,9 +398,8 @@ export const Header: React.FC = () => {
                   {isAdminMode && (
                     <button
                       onClick={() => handleNavClick('admin-dashboard')}
-                      className={`text-left py-2 text-accent font-bold flex items-center gap-1.5 ${
-                        activePage === 'admin-dashboard' ? 'pl-2 border-l-2 border-accent' : ''
-                      }`}
+                      className={`text-left py-2 text-accent font-bold flex items-center gap-1.5 ${activePage === 'admin-dashboard' ? 'pl-2 border-l-2 border-accent' : ''
+                        }`}
                     >
                       Admin Dashboard
                     </button>
@@ -463,7 +419,7 @@ export const Header: React.FC = () => {
                       'info'
                     );
                   }}
-                  className="w-full flex items-center justify-center gap-2 border border-accent/40 rounded py-2 px-4 text-xs font-semibold tracking-wider text-accent hover:bg-[#B9896A]/10 bg-white shadow-sm"
+                  className="w-full flex items-center justify-center gap-1.5 border border-accent/40 rounded py-2.5 px-2 text-[10px] font-bold uppercase tracking-widest text-accent hover:bg-[#B9896A]/10 bg-white shadow-sm whitespace-nowrap overflow-hidden"
                 >
                   <Award className="h-4 w-4" />
                   {isAdminMode ? 'Deactivate Admin' : 'Sandbox Admin Login'}
